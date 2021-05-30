@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../css/index.css" >
+    <script src="../js/axios.js"></script>
+    <script src="../js/vue.min.js"></script>
+    <script src="../layui/layui.all.js"></script>
+    <script src="../js/echarts.min.js"></script>
+</head>
+<!--<body class="layui-layout-body">-->
+<body>
+<div id="concurrentTest" v-cloak>
+    <div class="layui-fluid" v-cloak>
+        <div class="layui-row">
+        <div class="layui-col-xs6 layui-col-md12" style="text-align:center;">
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+                <legend>并发测试</legend>
+            </fieldset>
+        </div>
+        </div>
+        <div class="layui-row layui-col-space30 " style="margin-top: 50px; background-color: #F6F6F6">
+            <div class="layui-col-md5" >
+                <div class="containerConcurrentTest">
+                    <form class="layui-form" @submit.prevent="concurrentInfo" lay-filter="selectTest">
+
+                        <div class="layui-form-item layui-form-item-ConcurrentTest">
+                            <label class="layui-form-label">接口地址</label>
+                            <div class="layui-input-block layui-icon ">
+                                <input type="text" name="url" required  lay-verify="required|url" v-model="url"  autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-form-item-ConcurrentTest layui-select-2">
+                            <label class="layui-form-label">接口格式</label>
+                            <div class="layui-input-block layui-icon ">
+                                <select name="city" lay-verify="required" lay-search lay-filter="selectCompetition1" v-model="urlFormat">
+                                    <option v-for="(value,i) in urlFormatInfo":value="value"  >{{value}}</option>
+
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item layui-form-item-ConcurrentTest">
+                            <label class="layui-form-label">虚拟用户数</label>
+                            <div class="layui-input-block">
+                                <input type="text"  name="vUser" required  lay-verify="required|number" v-model="vUser"  autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-form-item-ConcurrentTest">
+                            <label class="layui-form-label">请求Body</label>
+                            <div class="layui-input-block">
+                                <input type="text"  name="vBody" placeholder='严格按照格式，如：{"limit":"5","page":"1"}"' lay-verify="" v-model="vBody"  autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-form-item-ConcurrentTest">
+                            <label class="layui-form-label">结果判断</label>
+                            <div class="layui-input-block">
+                                <input type="text"  name="vSuccess" placeholder='如："flag":true' lay-verify="" v-model="vSuccess"  autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-form-item-ConcurrentTest">
+                            <label class="layui-form-label">执行时间</label>
+                            <div class="layui-input-block">
+                                <input type="text" id="times" name="times" required  lay-verify="required|time" v-model="impTime"  autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+
+                        <div class="  layui-form-item layui-form-item-ConcurrentTest">
+                            <h5 class="layui-text " v-text="loginMsg"></h5>
+                        </div>
+                        <div class="layui-form-item layui-form-item-ConcurrentTest">
+                            <div class="layui-input-block">
+                                <button class="layui-btn layui-anim layui-anim-scale layui-btn-user"  lay-submit lay-filter="formDemo" >测试</button>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+            <div class="layui-col-md7">
+                <div class="layui-card">
+                    <div class="layui-card-header">接口请求总耗时:&nbsp&nbsp&nbsp&nbsp{{countTime}} &nbsp</div>
+                </div>
+                <div class="layui-card">
+                    <div class="layui-card-header">成功请求数:&nbsp&nbsp&nbsp&nbsp{{successResponse}}</div>
+                </div>
+                <div class="layui-card">
+                    <div class="layui-card-header">失败请求数:&nbsp&nbsp&nbsp&nbsp{{failResponse}}</div>
+                </div>
+
+                <div class="layui-collapse" lay-filter="loadTest">
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">每秒请求数:</h2>
+                        <div class="layui-colla-content">
+                            <div id="echartsMain" style="width:900px;height:350px"></div>
+                        </div>
+                    </div>
+                    <div class="layui-colla-item">
+                        <h2 class="layui-colla-title">请求响应时间:</h2>
+                        <div class="layui-colla-content">
+                            <div id="echartsMain2" style="width:900px;height:350px"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div>
+
+        </div>
+    </div>
+</div>
+<script  type="module" src="../views/admin/concurrentTest.js"></script>
+<script >
+    layui.use('form', function(){
+        var form = layui.form;
+        form.verify({
+            //我们既支持上述函数式的方式，也支持下述数组的形式
+            //数组的两个值分别代表：[正则匹配、匹配不符时的提示文字]
+            time: [
+                /^(20|21|22|23|[0-1]\d):[0-5]\d:[0-5]\d$/
+                ,'时间格式不正确'
+            ]
+        });
+    })
+</script>
+</body>
+</html>

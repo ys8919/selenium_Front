@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="css/login.css">
+
+    <script src="js/axios.js"></script>
+    <script src="js/vue.min.js"></script>
+    <script src="layui/layui.all.js"></script>
+
+
+
+</head>
+<body bgcolor="#c2c2c2" >
+<div  id="login">
+    <div class="container layui-anim layui-anim-scale" v-show="loginShow" v-cloak>
+        <form class="layui-form" @submit.prevent="loginOnclick">
+
+            <div class="layui-form-item">
+                <h1 class="layui-text ">电商推荐网站</h1>
+            </div>
+            <div class="  layui-form-item">
+                <h2 class="layui-text ">登录</h2>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户名</label>
+                <div class="layui-input-block layui-icon ">
+                    <input type="text" name="" required  lay-verify="required" placeholder="请输入用户名" v-model="username"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">密&nbsp;&nbsp;码</label>
+                <div class="layui-input-inline ">
+                    <input type="password" name="passwd" required lay-verify="required|pass" placeholder="请输入密码" v-model="password"  autocomplete="off" class="layui-input">
+                </div>
+
+            </div>
+            <div class="  layui-form-item">
+                <h5 class="layui-text " v-text="loginMsg"></h5>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn layui-anim layui-anim-scale"  lay-submit lay-filter="formDemo" >登录</button>
+                </div>
+            </div>
+            <a  href="javascript:void(0)" class="font-set" @click="passwordOnclick">忘记密码?</a>  <a href="javascript:void(0)" class="font-set" @click="registerURLOnclick">立即注册</a>
+
+        </form>
+    </div>
+
+    <div class="container1 layui-anim layui-anim-scale" v-show="registerShow" id="registerId" v-cloak>
+        <form class="layui-form" @submit.prevent="registerOnclick">
+
+            <div class="layui-form-item">
+                <h1 class="layui-text ">电商推荐网站</h1>
+            </div>
+            <div class="  layui-form-item">
+                <h2 class="layui-text ">注册</h2>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="username1" required  lay-verify="required|username" placeholder="请输入用户名" v-model="registerUsername"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">密&nbsp;&nbsp;码</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="registerPasswd" required lay-verify="required|pass" placeholder="请输入密码" v-model="registerPassword1"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">确认密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="registerPasswd1" required lay-verify="required|confirmPass" placeholder="请再次输入密码" v-model="registerPassword2"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">邮&nbsp;&nbsp;箱</label>
+                <div class="layui-input-block">
+                    <input type="text"  name="username1" required  lay-verify="email" placeholder="请输入邮箱" v-model="registerEmail"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="  layui-form-item">
+                <h5 class="layui-text " v-text="registerMsg"></h5>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn layui-anim layui-anim-scale"  lay-submit lay-filter="formDemo" >注册</button>
+                </div>
+            </div>
+            <a  href="javascript:void(0)" class="font-set1" @click="registerURLReturn">返回</a>
+
+        </form>
+    </div>
+
+    <div class="container2 layui-anim layui-anim-scale" v-show="passwordShow" v-cloak>
+        <form class="layui-form" @submit.prevent="pwdOnclick">
+
+            <div class="layui-form-item">
+                <h1 class="layui-text ">电商推荐网站</h1>
+            </div>
+            <div class="  layui-form-item">
+                <h2 class="layui-text ">找回密码</h2>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="username1" required  lay-verify="required" placeholder="请输入账号" v-model="pwdUserId"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">邮&nbsp;&nbsp;箱</label>
+                <div class="layui-input-block">
+                    <input type="text" name="username1" required  lay-verify="email" placeholder="请输入邮箱" v-model="pwdEmail"  autocomplete="off" class="layui-input"  lay-verify="email">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">密&nbsp;&nbsp;码</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="pwdPasswd" required lay-verify="required|pass" placeholder="请输入新密码" v-model="pwdPassword1"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">确认密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="pwdPasswd1" required lay-verify="required|confirmPass1" placeholder="请再次输入密码" v-model="pwdPassword2"  autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="  layui-form-item">
+                <h5 class="layui-text " v-text="pwdMsg"></h5>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn layui-anim layui-anim-scale" lay-submit lay-filter="formDemo" >确认</button>
+                </div>
+            </div>
+            <a  href="javascript:void(0)" class="font-set1" @click="passwordReturn">返回</a>
+
+        </form>
+    </div>
+
+</div>
+<script type="module" src="views/login.js"></script>
+
+</body>
+</html>

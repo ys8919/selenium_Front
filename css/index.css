@@ -1,0 +1,246 @@
+[v-cloak]{
+    display: none;
+}
+.containerUser{
+    width: 720px;
+    height: 620px;
+    min-height: 620px;
+    max-height: 620px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    padding: 20px;
+    z-index: 130;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 3px 18px rgba(100, 0, 0, 0.5);
+    font-size: 16px;
+}
+.containerConcurrentTest{
+    width: 450px;
+    height: auto;
+    /*min-height: 720px;*/
+    /*max-height: 720px;*/
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    padding: 20px;
+    z-index: 130;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 3px 18px rgba(100, 0, 0, 0.5);
+    font-size: 16px;
+}
+.containerWebLoadTest{
+    width: 450px;
+    height: auto;
+    /*min-height: 720px;*/
+    /*max-height: 720px;*/
+
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 20% auto ;
+    padding: 20px;
+    z-index: 130;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 3px 18px rgba(100, 0, 0, 0.5);
+    font-size: 16px;
+}
+.containerCompetitionDetails{
+    width: 820px;
+    height:620px;
+    min-height: 620px;
+    max-height: 620px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    padding: 20px;
+    z-index: 130;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 3px 18px rgba(100, 0, 0, 0.5);
+    font-size: 16px;
+}
+.containerRegister{
+    width: 720px;
+    height: 720px;
+    min-height: 720px;
+    max-height: 720px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    padding: 20px;
+    z-index: 130;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 3px 18px rgba(100, 0, 0, 0.5);
+    font-size: 16px;
+}
+.containerAuthenticationUpdate{
+    width: 720px;
+    height: 720px;
+    min-height: 720px;
+    max-height: 720px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    padding: 20px;
+    z-index: 130;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 3px 18px rgba(100, 0, 0, 0.5);
+    font-size: 16px;
+}
+.layui-input{
+    border-radius: 5px;
+    width: 300px;
+    height: 40px;
+    font-size: 15px;
+}
+.layui-textarea{
+    border-radius: 5px;
+    width: 300px;
+    font-size: 15px;
+}
+.layui-fluid-top{
+    margin-top: 20px;
+}
+.layui-search{
+
+ /*   margin-top: 50px;
+    right:50%;
+    margin-right: -300px;*/
+}
+.layui-select-2{
+    margin-right: 10%;
+
+}
+.layui-input-search{
+  float: right;
+    border-radius: 5px;
+    width: 400px;
+    height: 40px;
+    font-size: 15px;
+}
+/*.layui-input-search{
+    border-radius: 5px;
+    width: 200px;
+    height: 30px;
+    font-size: 15px;
+    margin-left: -20px;
+}*/
+.layui-btn-search{
+    margin-top: -5px;
+    margin-left: 0px;
+    border-radius: 5px;
+    width: 34px;
+    height: 34px;
+    font-size: 15px;
+}
+
+.layui-btn-user{
+    margin-left: -50px;
+    border-radius: 5px;
+    width: 350px;
+    height: 40px;
+    font-size: 15px;
+}
+.verity{
+    width: 120px;
+}
+.font-set{
+    font-size: 13px;
+    text-decoration: none;
+    margin-left: 100px;
+}
+.font-set1{
+    font-size: 13px;
+    text-decoration: none;
+    margin-left: 200px;
+}
+a:hover{
+    text-decoration: underline;
+}
+.layui-form-item h1{
+    font-size: 2.2em;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+
+}
+
+.layui-form-item h2{
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.layui-form-item h5{
+    margin-left:110px;
+    color: #FF5722;
+    margin-top: -5px;
+}
+.layui-form-item-info{
+    margin-top: 50px;
+    margin-left: 100px;
+}
+.layui-form-item-ConcurrentTest{
+    /*width: 300px;*/
+    margin-top: 30px;
+/*    margin-left: 5%;
+    margin-right: 20%;*/
+    left: 50%;
+    top: 50%;
+}
+.layui-form-item-webLoadTest{
+    /*width: 300px;*/
+    margin-top: 30px;
+/*    margin-left: 5%;
+    margin-right: 20%;*/
+    left: 50%;
+    top: 50%;
+}
+.layui-form-item-rz{
+    margin-top: 30px;
+    margin-left: 100px;
+}
+.layui-form-item-infoList{
+    margin-top: 30px;
+    position: absolute;
+    margin-left: 175px;
+}
+.layui-form-item-comInfo{
+    text-align: center;
+    margin-top: 150px;
+    margin-bottom: 20px;
+}
+.layui-form-item-comInfo-item {
+
+    margin-top:30px;
+
+}
+.pro-list{
+    margin-top: 20px;
+}
+.pro-details{
+    margin-top: 50px;
+}

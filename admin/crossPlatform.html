@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../layui/css/layui.css"  media="all">
+    <link rel="stylesheet" href="../css/index.css" >
+    <script src="../js/axios.js"></script>
+    <script src="../js/vue.min.js"></script>
+    <script src="../layui/layui.all.js"></script>
+    <script src="../js/echarts.min.js"></script>
+</head>
+<body >
+<!--<body class="layui-layout-body">-->
+<div id="crossPlatform">
+    <div class="layui-fluid" v-cloak>
+        <div class="layui-row">
+            <div class="layui-col-xs6 layui-col-md12" style="text-align:center;">
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+                    <legend>跨平台测试</legend>
+                </fieldset>
+            </div>
+        </div>
+        <div class="layui-row layui-col-space30 " style="margin-top: 50px; background-color: #F6F6F6">
+            <div class="layui-col-md4" >
+                <div class="containerConcurrentTest">
+                    <form class="layui-form" @submit.prevent="crossPlatformStart" lay-filter="selectTest">
+                        <div class="layui-form-item layui-form-item-ConcurrentTest">
+                            <div class="layui-input-block">
+                                <button class="layui-btn layui-anim layui-anim-scale layui-btn-user"  lay-submit lay-filter="formDemo" >启动测试</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <form class="layui-form" @submit.prevent="crossPlatformInfo" lay-filter="selectTest">
+
+                        <!--<div class="layui-form-item layui-form-item-ConcurrentTest">
+                            <label class="layui-form-label">接口地址</label>
+                            <div class="layui-input-block layui-icon ">
+                                <input type="text" name="cname" required  lay-verify="required|url" v-model="url"  autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-form-item-ConcurrentTest layui-select-2">
+                            <label class="layui-form-label">接口格式</label>
+                            <div class="layui-input-block layui-icon ">
+                                <select name="city" lay-verify="required" lay-search lay-filter="selectCompetition1" v-model="urlFormat">
+                                    <option v-for="(value,i) in urlFormatInfo":value="i">{{value}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item layui-form-item-ConcurrentTest">
+                            <label class="layui-form-label">虚拟用户数</label>
+                            <div class="layui-input-block">
+                                <input type="text"  name="price" required  lay-verify="required|number" v-model="vuser"  autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item layui-form-item-ConcurrentTest">
+                            <label class="layui-form-label">执行时间</label>
+                            <div class="layui-input-block">
+                                <input type="text" id="times" name="time" required  lay-verify="required|number" v-model="impTime"  autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+
+                        <div class="  layui-form-item layui-form-item-ConcurrentTest">
+                            <h5 class="layui-text " v-text="loginMsg"></h5>
+                        </div>-->
+                        <div class="layui-form-item layui-form-item-ConcurrentTest">
+                            <div class="layui-input-block">
+                                <button class="layui-btn layui-anim layui-anim-scale layui-btn-user"  lay-submit lay-filter="formDemo" >查询结果</button>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+            <div class="layui-col-md8">
+                <div class="layui-card">
+                    <div class="layui-card-header">性能结果</div>
+                    <div class="layui-card-body">
+                        <table class="layui-table" lay-skin="line">
+                            <colgroup>
+
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>浏览器名</th>
+                                <th>事务名</th>
+                                <th>系统名</th>
+                                <th>启动时间</th>
+                                <th>结束时间</th>
+                                <th>加载时间</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="(value,item) in crossPlatformData">
+                                <td>{{value.browserName}}</td>
+                                <td>{{value.scriptName}}</td>
+                                <td>{{value.systemName}}</td>
+                                <td>{{getTimeInfo(value.startTime)}}</td>
+                                <td>{{getTimeInfo(value.endTime)}}</td>
+                                <td>{{value.loadTime}} &nbsp ms</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div>
+
+        </div>
+    </div>
+</div>
+
+<script  type="module" src="../views/admin/crossPlatform.js"></script>
+</body>
+</html>
